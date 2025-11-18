@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex">
+
+        <aside id="sidebar" class=" w-64 bg-white min-h-screen border-r shadow-sm transition-all duration-300 fixed top-0 left-0">
+
+            <div class="px-6 py-6 flex items-center justify-between">
+
+                <div class="flex items-center space-x-3">
+                    <i data-lucide="graduation-cap"
+                        class="w-7 h-7 text-white bg-gradient-to-r from-blue-600 to-purple-500 rounded p-1"></i>
+                    <span id="logoText" class="text-xl font-semibold">EduAdmin</span>
+                </div>
+
+                <button id="toggleSidebar" class="transition">
+                    <i id="sidebarArrow" data-lucide="chevron-down"
+                        class="w-6 h-6 text-gray-600 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="mx-6 h-[1px] bg-gray-200 rounded-full"></div>
+
+         <a id="nav-dashboard" href="index.html"
+   class="flex items-center space-x-3 px-6 py-3 rounded-xl text-gray-700 font-medium hover:bg-gray-100">
+    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+    <span class="sidebar-text">Dashboard</span>
+</a>
+<a id="nav-teachers" href="teachers.html"
+   class="flex items-center space-x-3 px-6 py-3 rounded-xl text-gray-700 font-medium hover:bg-gray-100">
+    <i data-lucide="users" class="w-5 h-5"></i>
+    <span class="sidebar-text">Teachers</span>
+</a>
+<a id="nav-students" href="students.html"
+   class="flex items-center space-x-3 px-6 py-3 rounded-xl text-gray-700 font-medium hover:bg-gray-100">
+    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+    <span class="sidebar-text">Students</span>
+</a>
+<a id="nav-settings" href="settings.html"
+   class="flex items-center space-x-3 px-6 py-3 rounded-xl text-gray-700 font-medium hover:bg-gray-100">
+    <i data-lucide="settings" class="w-5 h-5"></i>
+    <span class="sidebar-text">Settings</span>
+</a>
+
+        </aside>
+
+       <main class="flex-1 p-10 ml-64">
+
+    <div class="flex items-center justify-between fixed top-0 left-64 right-0 bg-white p-6 z-40 shadow">
+        <h1 class="text-3xl font-semibold">Teachers</h1>
+        
+
+        <!-- Add Teacher Button -->
+        <button id="openAddModal"
+            class="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition">
+            + Add Teacher
+        </button>
+    </div>
+
+            <h3 class="text-xl font-semibold mt-[80px]">Teachers</h3>
+            <p class="text-gray-500 ">Showing 24 of 24 teachers</p>
+    <div class="mt-10 mb-8 h-[1px] bg-gray-200 rounded-full"></div>
+
+    <div class="flex flex-wrap gap-4 mb-6">
+
+        <input id="searchInput" type="text" placeholder="Search name or profession..."
+            class="px-4 py-2 border rounded-xl w-60">
+
+        <select id="genderFilter" class="px-4 py-2 border rounded-xl">
+            <option>All Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <select id="experienceFilter" class="px-4 py-2 border rounded-xl">
+            <option>All Experience</option>
+            <option>0-5</option>
+            <option>6-10</option>
+            <option>11-20</option>
+            <option>20+</option>
+        </select>
+
+        <select id="ratingFilter" class="px-4 py-2 border rounded-xl">
+            <option>All Rating</option>
+            <option>4.5+ stars</option>
+            <option>4.0+ stars</option>
+            <option>3.5+ stars</option>
+        </select>
+
+        <select id="professionFilter" class="px-4 py-2 border rounded-xl">
+            <option>All Profession</option>
+            <option>Mathematics</option>
+            <option>Music</option>
+            <option>Physical Education</option>
+            <option>Computer Science</option>
+            <option>Spanish</option>
+            <option>Physics</option>
+            <option>Geography</option>
+            <option>History</option>
+            <option>Biology</option>
+            <option>Art</option>
+            <option>English Literature</option>
+            <option>Chemistry</option>
+        </select>
+
+    </div>
+
+    <div id="teachersContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+   
+    </div>
+
+</main>
+
+<div id="addTeacherModal"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden items-center justify-center z-50">
+
+    <div class="bg-white rounded-xl p-6 w-96 shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Add Teacher</h2>
+
+        <div class="flex flex-col gap-3">
+            <input id="addName" type="text" placeholder="Full name" class="border px-3 py-2 rounded-xl">
+            <input id="addProfession" type="text" placeholder="Profession" class="border px-3 py-2 rounded-xl">
+            <input id="addExperience" type="number" placeholder="Experience (years)" class="border px-3 py-2 rounded-xl">
+            <input id="addRating" type="number" step="0.1" placeholder="Rating" class="border px-3 py-2 rounded-xl">
+
+            <select id="addGender" class="border px-3 py-2 rounded-xl">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </div>
+
+        <div class="flex justify-end mt-5 gap-3">
+            <button id="closeAddModal" class="px-4 py-2 border rounded-xl">Cancel</button>
+            <button id="saveTeacher"
+                class="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700">Save</button>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  <script>
+
+const toggleBtn = document.getElementById("toggleSidebar");
+const sidebar = document.getElementById("sidebar");
+const sidebarTexts = document.querySelectorAll(".sidebar-text");
+const logoText = document.getElementById("logoText");
+const arrow = document.getElementById("sidebarArrow");
+
+let sidebarOpen = true;
+
+toggleBtn.addEventListener("click", () => {
+    sidebarOpen = !sidebarOpen;
+
+    if (sidebarOpen) {
+        sidebar.style.width = "16rem";
+        logoText.classList.remove("hidden");
+        sidebarTexts.forEach(t => t.classList.remove("hidden"));
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        sidebar.style.width = "4.5rem"; 
+        logoText.classList.add("hidden");
+        sidebarTexts.forEach(t => t.classList.add("hidden"));
+        arrow.style.transform = "rotate(-90deg)";
+    }
+});
+
+lucide.createIcons();
+
+const currentPage = window.location.pathname.split("/").pop(); 
+const links = document.querySelectorAll("nav a");
+
+links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href === currentPage) {
+        link.classList.add("bg-gradient-to-r", "from-purple-500", "to-purple-600", "text-white");
+        link.classList.remove("text-gray-700");
+    } else {
+        link.classList.remove("bg-gradient-to-r", "from-purple-500", "to-purple-600", "text-white");
+        link.classList.add("text-gray-700");
+    }
+});
+
+
+    </script>
+  <script src="./main.js"></script>
+  
+    <script src="./teachers.js"></script>
+</body>
+
+</html>
